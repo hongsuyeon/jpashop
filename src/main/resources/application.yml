@@ -1,0 +1,26 @@
+spring:
+    datasource:
+      url: jdbc:h2:tcp://localhost/~/jpashop
+      username: sa
+      password:
+      driver-class-name: org.h2.Driver
+
+    jpa:
+        hibernate:
+            ddl-auto: create
+        properties:
+            hibernate:
+                show_sql: true
+                format_sql: true
+
+    redis:
+      host: 127.0.0.1
+      port: 6379
+jwt:
+  secret: test1112344youcantrevealthesecretkey1234012300040
+logging.level:
+    org.hibernate.sql: debug
+    org.hibernate.type.descriptor.sql: trace
+
+
+

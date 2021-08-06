@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<head th:replace="fragments/header :: header">
+    <title>login 페이지</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#loginBtnOnClick").on("click",function(){debugger;
+            const loginDTO = { 'email':  $("#userEmail").val(),
+                'password':  $("#userPassword").val(),
+            };
+
+            $.ajax({
+                url:"/api/v1/login"
+                , type:"POST"
+                , data: JSON.stringify(loginDTO)
+                , contentType: "application/json"
+                , success: function(data) {
+                    debugger;
+                    console.log("success data :"+data);
+                }
+                ,fail : function(data){
+                    debugger;
+                    console.log("fail data :"+data);
+                }
+            });
+        });
+    });
+</script>
+<body>
+<div class="col-md-6">
+    <label for="userEmail" class="form-label">email</label>
+    <input type="email" class="form-control" id="userEmail" name="userEmail">
+</div>
+<div class="col-md-6">
+    <label for="userPassword" class="form-label">Password</label>
+    <input type="password" class="form-control" id="userPassword" name="userPassword">
+</div>
+<div class="col-12">
+    <button id="loginBtnOnClick" class="btn btn-primary">로그인</button>
+    <form role="form" action="/api/v1/createJoinForm" >
+        <button type="submit" class="btn btn-primary">회원가입</button>
+    </form>
+</div>
+</body>
+
+</html>
